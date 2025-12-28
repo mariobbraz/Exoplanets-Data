@@ -115,5 +115,5 @@ def farther_exoplanets():
         file.write("List of Exoplanets Distance From Earth\n\n")
 
 
-# if __name__ == "__main__":
-    # main()
+if __name__ == "__main__":
+    main()
