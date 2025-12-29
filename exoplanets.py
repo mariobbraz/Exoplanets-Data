@@ -115,5 +115,20 @@ def farther_exoplanets():
         file.write("List of Exoplanets Distance From Earth\n\n")
 
 
+def big_exoplanets():
+    ...
+
+
+def small_exoplanets():
+    ...
+
+
+def days_duration():
+    ...
+
+
+def longest
+
+
 if __name__ == "__main__":
     main()
