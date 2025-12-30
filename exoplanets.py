@@ -9,6 +9,7 @@ response = requests.get(
 
 # Use the NASA API to get information about exoplanets
 def main():
+    """
     get_nasa_data()
     nasa_data_json()
     all_data_csv()
@@ -20,6 +21,10 @@ def main():
     publication_date()
     size_exoplanets()
     orbital_period()
+    exoplanets_mass()
+    """
+    stars_mass()
+    # insolation()
 
 
 def get_nasa_data():
@@ -220,16 +225,64 @@ def orbital_period():  # pl_orbper
                     f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")
 
 
-def mass_exoplanets():  # pl_masse
-    ...
+def exoplanets_mass():  # pl_masse
+    def funct(x): return float(
+        x['pl_masse']) if x['pl_masse'] else 999_999_999_999
+    data = sort_data(funct)
+
+    with open("exoplanets_mass.txt", "w") as file:
+        file.write("List of Exoplanets Mass in Order \n\n")
+        for i, exoplanet in enumerate(data, start=1):
+            if exoplanet['pl_masse'] and exoplanet['pl_masse'] != 999_999_999_999:
+                mass_tons = (float(exoplanet['pl_masse']) * 5.972e24) / 1000
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n"
+                    f"\tMass (M⊕​): {float(exoplanet['pl_masse']):,.2f} M⊕​ \n"
+                    f"\tMass (tons): {mass_tons:,.0f} tons \n")
+            else:
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")
 
 
-def star_mass():  # st_mass
-    ...
+def stars_mass():  # st_mass
+    def funct(x): return float(
+        x['st_mass']) if x['st_mass'] else 999_999_999_999
+    data = sort_data(funct)
+
+    with open("exoplanets_star_mass.txt", "w") as file:
+        file.write("List of Exoplanets Star's Mass in Order \n\n")
+        for i, exoplanet in enumerate(data, start=1):
+            if exoplanet['st_mass'] and exoplanet['st_mass'] != 999_999_999_999:
+                mass_tons = (float(exoplanet['st_mass']) * 1.9885e30) / 1000
+                planet_mass = mass_tons / (5.972e24 / 1000)
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n"
+                    f"\tStellar Mass (M☉): {float(exoplanet['st_mass']):,.3f} M☉​ \n"
+                    f"\tMass (Tons): {mass_tons:,.0f} tons \n"
+                    f"\tPlanet Mass (M⊕​): {planet_mass:,.0f} M⊕​ \n")
+
+            else:
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")
 
 
-def energy_recieved():  # pl_insol
-    ...
+def insolation():  # pl_insol
+    def funct(x): return float(
+        x['pl_insol']) if x['pl_insol'] else 999_999_999_999
+    data = sort_data(funct)
+
+    with open("exoplanets_insolation.txt", "w") as file:
+        file.write("List of Exoplanets Incident Stellar Flux in Order \n\n")
+        for i, exoplanet in enumerate(data, start=1):
+            if exoplanet['pl_insol'] and exoplanet['pl_insol'] != 999_999_999_999:
+                wm2 = float(exoplanet['pl_insol']) * 1361
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n"
+                    f"\tInsolation (S⊕): {float(exoplanet['pl_insol']):,.4f} S⊕​ \n"
+                    f"\tIncident Stellar Flux (W/m²​): {wm2:,.2f} W/m² \n")
+            else:
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")
 
 
 if __name__ == "__main__":
