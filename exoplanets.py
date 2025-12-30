@@ -19,6 +19,7 @@ def main():
     discovery_year()
     publication_date()
     size_exoplanets()
+    orbital_period()
 
 
 def get_nasa_data():
@@ -192,7 +193,31 @@ def size_exoplanets():  # pl_rade
 
 
 def orbital_period():  # pl_orbper
-    ...
+    def funct(x): return float(x['pl_orbper']
+                               ) if x['pl_orbper'] else 999_999_999_999
+    data = sort_data(funct)
+
+    with open("exoplanets_orbital_period.txt", "w") as file:
+        file.write("List of Exoplanets Orbital Period\n\n")
+        for i, exoplanet in enumerate(data, start=1):
+            if exoplanet['pl_orbper'] and exoplanet['pl_orbper'] != 999_999_999_999:
+                if float(exoplanet['pl_orbper']) < 10_000:
+                    earth_years = float(exoplanet['pl_orbper']) / 365.25
+                    file.write(
+                        f"{i}) Name: {exoplanet['pl_name']}: \n"
+                        f"\tOrbital Period: {float(exoplanet['pl_orbper']):,.2f} \n"
+                        f"\tEarth Years: {earth_years:,.4f} \n")
+
+                elif exoplanet['pl_orbper'] and float(exoplanet['pl_orbper']) > 10_000:
+                    earth_years = float(exoplanet['pl_orbper']) / 365.25
+                    file.write(
+                        f"{i}) Name: {exoplanet['pl_name']}: \n"
+                        f"\tOrbital Period: (estimated) {float(exoplanet['pl_orbper']):,.2f} \n"
+                        f"\tEarth Years: (estimated) {earth_years:,.4f} \n")
+
+            else:
+                file.write(
+                    f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")
 
 
 def mass_exoplanets():  # pl_masse
