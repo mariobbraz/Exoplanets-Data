@@ -1,9 +1,8 @@
-    # Exoplanet Data Analyzer
-    #### Video Demo:  <URL HERE>
-    #### Description:
-    This program is a data processing tool that collects exoplanet data from the **NASA Exoplanet Archive API**, removes duplicates, converts formats, and generates sorted and human-readable outputs using multiple scientific measurement units.
+# Exoplanet Data Analyzer
 
-    The objective of this project is to better understand the universe and the exoplanets along with their **wide-ranging properties**
+This program is a data processing tool that collects exoplanet data from the **NASA Exoplanet Archive API**, removes duplicates, converts formats, and generates sorted and human-readable outputs using multiple scientific measurement units.
+
+The objective of this project is to better understand the universe and the exoplanets along with their **wide-ranging properties**
 
 ## Description
 

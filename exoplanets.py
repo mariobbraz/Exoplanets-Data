@@ -330,7 +330,7 @@ def stars_mass():  # st_mass
 def insolation():  # pl_insol
     """
     Sort and enumerate the data by Incident Stellar Flux and formatted in Insolation (S⊕)
-    and Incident Stellar Flux (W/m²​) and save it in 'exoplanets_insolation.txt'
+    and Incident Stellar Flux (W/m²) and save it in 'exoplanets_insolation.txt'
     """
     def funct(x): return float(
         x['pl_insol']) if x['pl_insol'] else 999_999_999_999
