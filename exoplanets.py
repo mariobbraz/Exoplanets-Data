@@ -263,14 +263,14 @@ def orbital_period():  # pl_orbper
                     earth_years = float(exoplanet['pl_orbper']) / 365.25
                     file.write(
                         f"{i}) Name: {exoplanet['pl_name']}: \n"
-                        f"\tOrbital Period: {float(exoplanet['pl_orbper']):,.2f} days \n"
+                        f"\tOrbital Period (days): {float(exoplanet['pl_orbper']):,.2f} \n"
                         f"\tEarth Years: {earth_years:,.4f} \n")
 
                 elif exoplanet['pl_orbper'] and float(exoplanet['pl_orbper']) > 10_000:
                     earth_years = float(exoplanet['pl_orbper']) / 365.25
                     file.write(
                         f"{i}) Name: {exoplanet['pl_name']}: \n"
-                        f"\tOrbital Period: (estimated) {float(exoplanet['pl_orbper']):,.2f} days \n"
+                        f"\tOrbital Period (days): (estimated) {float(exoplanet['pl_orbper']):,.2f} \n"
                         f"\tEarth Years: (estimated) {earth_years:,.4f} \n")
 
             else:
