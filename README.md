@@ -48,7 +48,7 @@ https://exoplanetarchive.ipac.caltech.edu/
 To run the code in your machine, copy the code or clone the repository
 
 ```bash
-git clone https://github.com/code50/220114113
+git clone https://github.com/mariobbraz/Exoplanets-Data
 cd project
 ```
 
