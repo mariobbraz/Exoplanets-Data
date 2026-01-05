@@ -90,7 +90,6 @@ After running the script, the repository structure will look like:
 ```bash
 .
 ├── exoplanets.py
-├── test_exoplanets.py
 ├── data/
 │   ├── nasa_exoplanets.csv
 │   ├── nasa_exoplanets.json
