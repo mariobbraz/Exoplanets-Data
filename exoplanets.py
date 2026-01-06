@@ -142,7 +142,8 @@ def all_data_csv():
     Writes the file:
         data/exoplanets.csv
     """
-    with open(DATA_DIR / "nasa_exoplanets.csv", "r", encoding="utf-8") as f, open(DATA_DIR / "exoplanets.csv", "w", encoding="utf-8") as file:
+    with open(DATA_DIR / "nasa_exoplanets.csv", "r", encoding="utf-8") as f, \
+            open(DATA_DIR / "exoplanets.csv", "w", encoding="utf-8") as file:
         reader = csv.DictReader(f)
         database = check_duplicates(reader)
 
@@ -164,7 +165,8 @@ def clean_csv_data():
     Writes the file:
         data/key_exoplanets.csv
     """
-    with open(DATA_DIR / "nasa_exoplanets.csv", "r", encoding="utf-8") as f, open(DATA_DIR / "key_exoplanets.csv", "w", encoding="utf-8") as file:
+    with open(DATA_DIR / "nasa_exoplanets.csv", "r", encoding="utf-8") as f, \
+            open(DATA_DIR / "key_exoplanets.csv", "w", encoding="utf-8") as file:
         fieldnames = [
             "pl_name",
             "disc_year",
@@ -265,20 +267,11 @@ def sort_data(funct):
     Returns
     -------
     list of dict
-        Sorted list of unique exoplanet records.
+        Sorted list of exoplanet records.
     """
     with open(DATA_DIR / "key_exoplanets.json", "r", encoding="utf-8") as file:
         data = json.load(file)
-        sorted_data = sorted(data, key=funct)
-
-        database = []
-        set_data = set()
-
-        for row in sorted_data:
-            if row["pl_name"] not in set_data:
-                database.append(row)
-                set_data.add(row['pl_name'])
-    return database
+    return sorted(data, key=funct)
 
 
 def exoplanets_distance():
@@ -464,7 +457,7 @@ def exoplanets_mass():  # pl_masse
                 mass_kg = (float(exoplanet['pl_masse']) * EARTH_MASS_KG)
                 file.write(
                     f"{i}) Name: {exoplanet['pl_name']}: \n"
-                    f"\tMass (M⊕​): {float(exoplanet['pl_masse']):,.2f} \n"
+                    f"\tMass (M⊕): {float(exoplanet['pl_masse']):,.2f} \n"
                     f"\tMass (kg): {mass_kg:,.0f} \n")
             else:
                 file.write(
@@ -500,7 +493,7 @@ def stars_mass():  # st_mass
                     f"{i}) Name: {exoplanet['pl_name']}: \n"
                     f"\tStellar Mass (M☉): {float(exoplanet['st_mass']):,.3f} \n"
                     f"\tMass (kg): {mass_kg:,.0f} \n"
-                    f"\tPlanet Mass (M⊕​): {planet_mass:,.0f} \n")
+                    f"\tPlanet Mass (M⊕): {planet_mass:,.0f} \n")
 
             else:
                 file.write(
@@ -532,7 +525,7 @@ def insolation():  # pl_insol
                 file.write(
                     f"{i}) Name: {exoplanet['pl_name']}: \n"
                     f"\tInsolation (S⊕): {float(exoplanet['pl_insol']):,.4f} \n"
-                    f"\tIncident Stellar Flux (W/m²​): {wm2:,.2f} \n")
+                    f"\tIncident Stellar Flux (W/m²): {wm2:,.2f} \n")
             else:
                 file.write(
                     f"{i}) Name: {exoplanet['pl_name']}: \n\tNo data \n")

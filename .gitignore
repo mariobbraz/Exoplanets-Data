@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache
+.env
+.venv
+env/
+
+# All NASA Exoplanet Archive Data
+data/nasa_exoplanets.csv
+data/nasa_exoplanets.json
