@@ -88,7 +88,7 @@ All output files are saved inside the data/ directory.
 After running the script, the repository structure will look like:
 
 ```bash
-.
+Exoplanets-Data/
 ├── exoplanets.py
 ├── data/
 │   ├── nasa_exoplanets.csv
