@@ -25,13 +25,13 @@ The output is designed to be more readable by converting raw scientific values i
 The data is organized and sorted in a variety of different categories, such as:
 
 - **Size** — Earth radii (R⊕), kilometers (km)
-- **Distance from Earth** - km, Astronomical Units (AU), Light Years (ly), Parsecs (pc)
+- **Distance from Earth** — km, Astronomical Units (AU), Light Years (ly), Parsecs (pc)
 - **Discovery year**
-- **Date of publication** (month/year)
-- **Orbital period** (days - Earth years)
-- **Mass** - Earth masses (M⊕), kilograms (kg)
-- **Stellar mass** - Stellar mass (M☉), kg, Earth masses (M⊕)
-- **Insolation** - Insolation (S⊕), Incident stellar flux (W/m²)
+- **Date of publication** — (month/year)
+- **Orbital period** — Days, Earth years
+- **Mass** — Earth masses (M⊕), kilograms (kg)
+- **Stellar mass** — Stellar mass (M☉), kg, Earth masses (M⊕)
+- **Insolation** — Insolation (S⊕), Incident stellar flux (W/m²)
 
 ## Data Source
 
@@ -51,7 +51,7 @@ Follow the steps below to run the project locally:
 
 ```bash
 git clone https://github.com/mariobbraz/Exoplanets-Data
-cd project
+cd Exoplanet-Data
 ```
 
 2. Create and activate a virtual environment:
