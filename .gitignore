@@ -8,4 +8,4 @@ env/
 
 # All NASA Exoplanet Archive Data
 data/nasa_exoplanets.csv
-data/nasa_exoplanets.json
+v1/v1_data/nasa_exoplanets.json
