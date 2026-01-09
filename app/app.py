@@ -71,6 +71,7 @@ class ExoplanetApp:
 
     def close(self):
         self.conn.close()
+        self.root.destroy()
 
 
 if __name__ == "__main__":
