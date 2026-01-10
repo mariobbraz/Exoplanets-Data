@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+import requests
 from pathlib import Path
 
 DB_PATH = Path("data/exoplanets.db")
@@ -14,18 +15,18 @@ with open(CSV_PATH, newline="", encoding="utf-8") as f:
 
     for row in reader:
         cur.execute("""
-            INSERT OR IGNORE INTO exoplanets (
-                pl_name, disc_year, disc_pubdate, sy_dist,
-                discoverymethod, pl_orbper, pl_orbsmax,
-                pl_rade, pl_masse, pl_eqt, pl_insol,
-                st_teff, st_mass, st_rad
-            ) VALUES (
-                :pl_name, :disc_year, :disc_pubdate, :sy_dist,
-                :discoverymethod, :pl_orbper, :pl_orbsmax,
-                :pl_rade, :pl_masse, :pl_eqt, :pl_insol,
-                :st_teff, :st_mass, :st_rad
-            )
-        """, row)
+                INSERT OR IGNORE INTO exoplanets (
+                    pl_name, disc_year, disc_pubdate, sy_dist,
+                    discoverymethod, pl_orbper, pl_orbsmax,
+                    pl_rade, pl_masse, pl_eqt, pl_insol,
+                    st_teff, st_mass, st_rad
+                ) VALUES (
+                    :pl_name, :disc_year, :disc_pubdate, :sy_dist,
+                    :discoverymethod, :pl_orbper, :pl_orbsmax,
+                    :pl_rade, :pl_masse, :pl_eqt, :pl_insol,
+                    :st_teff, :st_mass, :st_rad
+                )
+            """, row)
 
 conn.commit()
 conn.close()
