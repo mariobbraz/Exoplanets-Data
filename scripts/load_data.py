@@ -1,20 +1,24 @@
 import sqlite3
 import csv
-import requests
 from pathlib import Path
 
-DB_PATH = Path("data/exoplanets.db")
-CSV_PATH = Path("data/nasa_exoplanets.csv")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
 
-conn = sqlite3.connect(DB_PATH)
-cur = conn.cursor()
+DB_PATH = DATA_DIR / "exoplanets.db"
+CSV_PATH = DATA_DIR / "nasa_exoplanets.csv"
 
-with open(CSV_PATH, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    conn.execute("BEGIN")
 
-    for row in reader:
-        cur.execute("""
+def load_data():
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+
+    with open(CSV_PATH, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        conn.execute("BEGIN")
+
+        for row in reader:
+            cur.execute("""
                 INSERT OR IGNORE INTO exoplanets (
                     pl_name, disc_year, disc_pubdate, sy_dist,
                     discoverymethod, pl_orbper, pl_orbsmax,
@@ -28,7 +32,11 @@ with open(CSV_PATH, newline="", encoding="utf-8") as f:
                 )
             """, row)
 
-conn.commit()
-conn.close()
+    conn.commit()
+    conn.close()
 
-print("Data loaded.")
+    print("Data loaded successfully.")
+
+
+if __name__ == "__main__":
+    load_data()

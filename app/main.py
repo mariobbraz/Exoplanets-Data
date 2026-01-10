@@ -7,7 +7,13 @@ from tkinter import ttk
 from tkinter import messagebox
 from pathlib import Path
 
-DB_PATH = Path("data/exoplanets.db")
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+SCRIPTS_DIR = BASE_DIR / "scripts"
+
+DB_PATH = DATA_DIR / "exoplanets.db"
+
 
 ALLOWED_ORDER = {
     "name": "pl_name",
@@ -113,15 +119,12 @@ class ExoplanetApp:
 
     def update_database(self):
         try:
-            base_dir = Path(__file__).resolve().parent.parent
-            scripts_dir = base_dir / "scripts"
-
             subprocess.run(
-                [sys.executable, str(scripts_dir / "update_data.py")],
+                [sys.executable, str(SCRIPTS_DIR / "update_data.py")],
                 check=True
             )
             subprocess.run(
-                [sys.executable, str(scripts_dir / "load_data.py")],
+                [sys.executable, str(SCRIPTS_DIR / "load_data.py")],
                 check=True
             )
 

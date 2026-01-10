@@ -1,7 +1,11 @@
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path("data/exoplanets.db")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+DB_PATH = DATA_DIR / "exoplanets.db"
+
 SCHEMA = """
     CREATE TABLE IF NOT EXISTS exoplanets (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,8 +26,16 @@ SCHEMA = """
     );
     """
 
-conn = sqlite3.connect(DB_PATH)
-conn.executescript(SCHEMA)
-conn.close()
 
-print("Database created.")
+def create_database():
+    DATA_DIR.mkdir(exist_ok=True)
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.executescript(SCHEMA)
+    conn.close()
+
+    print("Database created successfully.")
+
+
+if __name__ == "__main__":
+    create_database()
